@@ -26,7 +26,7 @@
              allowedContent: '',
            },
            template:
-                   '<a class="btn">' +
+                   '<a class="btn" role="button">' +
                    '</a>',
            dialog: 'bt_link_btn',
           defaults: {
@@ -56,7 +56,6 @@
                    this.setData( 'btn_type', 'btn-warning' );
                if ( this.element.hasClass( 'btn-danger' ) )
                    this.setData( 'btn_type', 'btn-danger' );
-               console.log(this.element);
                if (this.element.getText())
                     this.setData('btn_text', this.element.getText());
                // If href isset then set it for dialog window.
