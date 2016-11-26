@@ -9,7 +9,6 @@
       CKEDITOR.dialog.add('bt_link_btn',  this.path + 'dialogs/bt_link_btn.js');
        editor.addContentsCss( this.path + 'editor.css');
        CKEDITOR.document.appendStyleSheet( this.path + 'editor.css'); // Add stylesheet to dialog window.
-       console.log(CKEDITOR);
       // Add UI button.  The old way. This will not work otherwise at some systems.
        editor.ui.addButton('bt_link_btn', {
          label: 'Bootstrap button',
@@ -40,44 +39,44 @@
            // initialize
            // Init function is useful after copy paste rebuild.
            init: function() {
-               if ( this.element.hasClass( 'btn-default' ) )
-                   this.setData( 'btn_type', 'btn-default' );
-
-               if ( this.element.hasClass( 'btn-primary' ) )
-                   this.setData( 'btn_type', 'btn-primary' );
-
-               if ( this.element.hasClass( 'btn-info' ) )
-                   this.setData( 'btn_type', 'btn-info' );
-
-               if ( this.element.hasClass( 'btn-success' ) )
-                   this.setData( 'btn_type', 'btn-success' );
-
-               if ( this.element.hasClass( 'btn-warning' ) )
-                   this.setData( 'btn_type', 'btn-warning' );
-               if ( this.element.hasClass( 'btn-danger' ) )
-                   this.setData( 'btn_type', 'btn-danger' );
+           ///console.log(this.btn_sizes);
+               var types = this.btn_types;
+               var sizes = this.btn_sizes;
+               for (var i = 0; i <= types.length; i++) {
+                 if (this.element.hasClass(types[i]))
+                   this.setData( 'btn_type', types[i] );
+               }
+               for (var i = 0; i <= sizes.length; i++) {
+                 if (this.element.hasClass(sizes[i]))
+                   this.setData( 'btn_size', sizes[i]);
+               }
                if (this.element.getText())
                     this.setData('btn_text', this.element.getText());
+
                // If href isset then set it for dialog window.
               if (this.element.hasAttribute('href'))
                    this.setData('btn_href', this.element.getAttribute('href'));
 
               if (this.element.hasAttribute('target'))
                 this.setData('btn_target', this.element.getAttribute('target'));
-
-
            },
-
             data: function() {
-              this.element.removeClass( 'btn-primary' );
-              this.element.removeClass( 'btn-default' );
-              this.element.removeClass( 'btn-warning' );
-              this.element.removeClass( 'btn-info' );
-              this.element.removeClass( 'btn-success' );
-              this.element.removeClass( 'btn-danger' );
+               var classes = this.btn_types;
+               var sizes = this.btn_sizes;
+
+               for (var i = 0; i <= classes.length; i++) {
+                 this.element.removeClass(classes[i]);
+               }
+
+               for (var i = 0; i <= sizes.length; i++) {
+                 this.element.removeClass(sizes[i]);
+               }
 
               if ( this.data.btn_type )
                 this.element.addClass( this.data.btn_type );
+
+              if ( this.data.btn_size )
+                this.element.addClass( this.data.btn_size );
 
               if ( this.data.btn_text )
                 this.element.setText( this.data.btn_text );
@@ -89,6 +88,8 @@
               if ( this.data.btn_target )
                 this.element.setAttribute('target', this.data.btn_target);
             },
+            btn_types: ['btn-default','btn-primary','btn-info','btn-success','btn-warning', 'btn-danger'],
+            btn_sizes: ['btn-lg','btn-sm','btn-xs'],
           }
         );
       }

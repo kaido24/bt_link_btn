@@ -55,3 +55,24 @@
     background-color: #d9534f;
     border-color: #d43f3a;
 }
+
+#bt-btn-example-wrap .btn-lg, .btn-lg {
+   padding: 10px 16px;
+   font-size: 18px;
+   line-height: 1.3333333;
+   border-radius: 6px;
+}
+
+#bt-btn-example-wrap .btn-sm, .btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+#bt-btn-example-wrap .btn-xs, .btn-xs {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
