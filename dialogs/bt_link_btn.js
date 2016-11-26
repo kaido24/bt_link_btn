@@ -3,11 +3,6 @@ CKEDITOR.dialog.add('bt_link_btn', function(editor) {
 		title: 'Bootstrap link button',
 		minWidth: 600,
 		minHeight: 300,
-		onLoad: function () {
-			this.getElement().removeClass('cke_reset_all');
-			var dialog_body = document.getElementsByClassName("cke_dialog_contents_body");
-			dialog_body[0].setAttribute('class', 'cke_reset cke_dialog_contents_body');
-		},
 		contents: [{
 			id: 'bt_link_info',
 			label: 'Bootstrap link info',
@@ -25,7 +20,6 @@ CKEDITOR.dialog.add('bt_link_btn', function(editor) {
 									width: '200px',
 									required: true,
 									label: 'Button text',
-									// validate: validatorNum(lang.numRowsError),
 									setup: function(widget) {
 										this.setValue(widget.data.btn_text);
 									},
@@ -79,7 +73,7 @@ CKEDITOR.dialog.add('bt_link_btn', function(editor) {
 									label: 'Button url',
 									// validate: validatorNum(lang.numRowsError),
 									setup: function(widget) {
-										this.setValue(widget.data.btn_href);
+										this.setValue(widget.data.btn_href ? widget.data.btn_href : '#');
 									},
 									validate: function() {
 										if ( !this.getValue() ) {
@@ -116,7 +110,7 @@ CKEDITOR.dialog.add('bt_link_btn', function(editor) {
 								styles: ['vertical-align:top'],
 								children: [{
 									type: 'html',
-									html: '<a class="btn" id="bt_btn_example" role="button">Sample text</a>'
+									html: '<div id="bt-btn-example-wrap"><btn class="btn" id="bt_btn_example" role="button">Sample text</btn></div>'
 								}]
 							} // second vbox end.
 						], // hbox children end.

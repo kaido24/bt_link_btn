@@ -5,11 +5,11 @@
       icons: 'bt_link_btn',
       init: function(editor) {
      // var lang = editor.lang.btgrid;
-
+    
       CKEDITOR.dialog.add('bt_link_btn',  this.path + 'dialogs/bt_link_btn.js');
-
-       editor.addContentsCss( this.path + '/editor.css');
-
+       editor.addContentsCss( this.path + 'editor.css');
+       CKEDITOR.document.appendStyleSheet( this.path + 'editor.css'); // Add stylesheet to dialog window.
+       console.log(CKEDITOR);
       // Add UI button.  The old way. This will not work otherwise at some systems.
        editor.ui.addButton('bt_link_btn', {
          label: 'Bootstrap button',
